@@ -92,6 +92,8 @@ export default {
   .form {
     width: 100%;
     margin-top: 60px;
+    position: relative;
+    z-index: 10;
     .form-item {
       width: 100%;
       margin-bottom: 20px;
