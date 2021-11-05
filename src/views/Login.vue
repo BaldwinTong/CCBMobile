@@ -55,7 +55,13 @@ export default {
     },
     login() {
       if (this.form.userName && this.form.password) {
-        this.$router.push("/home");
+        if (this.form.userName == "boss") {
+          this.$router.push("/audit");
+        } else if (this.form.userName == "farm") {
+          this.$router.push("/bill");
+        }else{
+          this.$toast("此账号未开通！");
+        }
       } else {
         this.$toast("请正确填写帐号密码！");
       }

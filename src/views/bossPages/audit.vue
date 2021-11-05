@@ -79,8 +79,24 @@
           审核
         </div>
         <div class="btn btn2" v-if="item.status == 1">已审核</div>
-        <div class="status status1" v-if="item.status == 0">待审核</div>
-        <div class="status status2" v-if="item.status == 1">已审核</div>
+        <div
+          class="status status2"
+          v-if="item.status == 0 && item.auditResult == 0"
+        >
+          待审核
+        </div>
+        <div
+          class="status status1"
+          v-if="item.status == 1 && item.auditResult == 1"
+        >
+          已通过
+        </div>
+        <div
+          class="status status3"
+          v-if="item.status == 1 && item.auditResult == 2"
+        >
+          未通过
+        </div>
       </div>
     </div>
   </div>
@@ -96,6 +112,7 @@ export default {
         {
           id: 1,
           status: 0, // 0 是未审核， 1 是已审核
+          auditResult: 0,
           applicant: "王大锤",
           applicantDate: "2021.11.04",
           product: "大白菜",
@@ -109,6 +126,7 @@ export default {
         {
           id: 2,
           status: 1, // 0 是未审核， 1 是已审核
+          auditResult: 1,
           applicant: "王大锤",
           applicantDate: "2021.11.04",
           product: "小白菜",
@@ -117,7 +135,21 @@ export default {
           totalPrice: "88000.00",
           TradingPartner: "王二锤",
           bankName: "中国建设银行",
-          bankNumber: "6666XXXXXXXXXXXX4738",
+          bankNumber: "6666XXXXXXXXXXXX4778",
+        },
+        {
+          id: 3,
+          status: 1, // 0 是未审核， 1 是已审核
+          auditResult: 2,
+          applicant: "王大锤",
+          applicantDate: "2021.11.04",
+          product: "包白菜",
+          weight: "21.55",
+          price: "46.00",
+          totalPrice: "58000.00",
+          TradingPartner: "王三锤",
+          bankName: "中国建设银行",
+          bankNumber: "6666XXXXXXXXXXXX4478",
         },
       ],
       nocheckList: [],
@@ -393,6 +425,9 @@ export default {
     }
     .status2 {
       background-color: #66b1ff;
+    }
+    .status3 {
+      background-color: #FD4D4D;
     }
   }
 }
