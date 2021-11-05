@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
-        redirect: 'Audit'
+        redirect: 'Bill'
     }, {
         path: '/home',
         name: 'Home',
@@ -28,6 +28,12 @@ const routes = [{
         name: 'Approve',
         component: () =>
             import ('../views/bossPages/approve.vue')
+    },
+    {
+        path: '/bill',
+        name: 'Bill',
+        component: () =>
+            import ('../views/farmPages/Bill')
     }
 ]
 

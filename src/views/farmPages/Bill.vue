@@ -7,34 +7,14 @@
         <input type="text" class="inpt" placeholder="请输入关键字" />
       </div>
     </div>
-    <div class="tabs">
-      <div class="tab-item" @click="changeTab(1)">
-        <p>全部</p>
-        <div class="line" v-if="tabsIndex == 1"></div>
-      </div>
-      <div class="tab-item" @click="changeTab(2)">
-        <p>待审核</p>
-        <div class="line" v-if="tabsIndex == 2"></div>
-      </div>
-      <div class="tab-item" @click="changeTab(3)">
-        <p>已审核</p>
-        <div class="line" v-if="tabsIndex == 3"></div>
-      </div>
-    </div>
 
     <div class="data">
       <div class="data-item" v-for="item in list" :key="item.id">
         <div class="item-top">
           <div class="con-item">
             <div class="items">
-              <img src="../../assets/people.png" alt="" />
-              <div class="name">申请人:{{ item.applicant }}</div>
-            </div>
-          </div>
-          <div class="con-item">
-            <div class="items">
               <img src="../../assets/datetime.png" alt="" />
-              <div class="name">申请时间:{{ item.applicantDate }}</div>
+              <div class="name">交易时间:{{ item.applicantDate }}</div>
             </div>
             <div class="items">
               <img class="pro-img" src="../../assets/product.png" alt="" />
@@ -75,12 +55,7 @@
             <p class="title">银行账号：{{ item.bankNumber }}</p>
           </div>
         </div>
-        <div class="btn btn1" v-if="item.status == 0" @click="toCheck(item.id)">
-          审核
-        </div>
-        <div class="btn btn2" v-if="item.status == 1">已审核</div>
-        <div class="status status1" v-if="item.status == 0">待审核</div>
-        <div class="status status2" v-if="item.status == 1">已审核</div>
+       
       </div>
     </div>
   </div>
@@ -215,38 +190,6 @@ export default {
   }
 }
 
-.tabs {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  box-sizing: border-box;
-  margin: 18px 0;
-  font-size: 16px;
-  .tab-item {
-    height: 30px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    .line {
-      width: 60%;
-      height: 3px;
-      border-radius: 2px;
-      background-color: #2785fe;
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .active {
-      color: #2785fe;
-    }
-  }
-}
 
 .data {
   width: 100%;
@@ -258,7 +201,7 @@ export default {
     border: 1px solid #ececec;
     box-sizing: border-box;
     position: relative;
-    margin-bottom: 20px;
+    margin-top: 20px;
     .item-top {
       padding: 12px;
       background-color: #fff;
@@ -343,6 +286,7 @@ export default {
       padding: 0 12px 12px;
       background-color: #fff;
       box-sizing: border-box;
+      border-radius: 0 0 8px 8px;
       .info-item {
         color: #333333;
         font-size: 14px;
@@ -359,41 +303,7 @@ export default {
         }
       }
     }
-    .btn {
-      width: 100%;
-      height: 44px;
-      color: #fff;
-      line-height: 44px;
-      text-align: center;
-      letter-spacing: 3px;
-      cursor: pointer;
-      border-radius: 0 0 8px 8px;
-    }
-    .btn1 {
-      background-color: #4185f5;
-    }
-    .btn2 {
-      background-color: #909399;
-      cursor: not-allowed;
-    }
-
-    .status {
-      width: 55px;
-      line-height: 25px;
-      font-size: 14px;
-      text-align: center;
-      color: #fff;
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-radius: 0 8px 0 0;
-    }
-    .status1 {
-      background-color: #fba216;
-    }
-    .status2 {
-      background-color: #66b1ff;
-    }
+    
   }
 }
 </style>
